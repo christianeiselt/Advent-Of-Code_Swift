@@ -22,8 +22,8 @@ jobs:
         run: swift --version
 
       - name: Build
-        run: swift build -v
+        run: ./buildAll.sh
 
-      - name: Run tests
-        run: swift test -v
+      - name: Run
+        run: ./runAll.sh
         
