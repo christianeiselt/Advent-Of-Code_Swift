@@ -4,7 +4,8 @@ import XCTest
 final class PuzzleTests: XCTestCase {
     func testExample() throws {
         
-        let puzzle = Puzzle(input: "")
+        let puzzle = Puzzle(input: try! String(contentsOfFile: "example.txt"))
+
         XCTAssertEqual(puzzle.part1(), 0)
         XCTAssertEqual(puzzle.part2(), 0)
     }
