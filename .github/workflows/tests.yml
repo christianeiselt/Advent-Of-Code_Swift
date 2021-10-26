@@ -10,7 +10,7 @@ on:
 
 jobs:
   swift-job:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -23,6 +23,9 @@ jobs:
 
       - name: Build
         run: ./buildAll.sh
+
+      - name: Test
+        run: ./testAll.sh
 
       - name: Run
         run: ./runAll.sh
