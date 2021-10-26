@@ -1,9 +1,10 @@
 @testable import Puzzle
+import AdventKit
 import XCTest
 
 final class PuzzleTests: XCTestCase {
     func testExample() throws {
-        
+
         let puzzle = Puzzle(input: try! String(contentsOfFile: "example.txt"))
 
         XCTAssertEqual(puzzle.part1(), 0)

@@ -14,12 +14,18 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Main",
-            dependencies: ["Puzzle"]),
+            dependencies: ["Puzzle"],
+            resources: [
+                .process("input.txt", localization: .default)
+            ]),
         .target(
             name: "Puzzle",
             dependencies: ["AdventKit"]),
         .testTarget(
             name: "PuzzleTests",
-            dependencies: ["Puzzle"]),
+            dependencies: ["Puzzle"],
+            resources: [
+                .process("example.txt", localization: .default)
+            ]),
     ]
 )
