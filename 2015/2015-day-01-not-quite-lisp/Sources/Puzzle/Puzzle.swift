@@ -8,18 +8,20 @@ public class Puzzle {
     }
 
     public func part1() -> Int {
-            let instructions = input.map { (Character) -> Character in
+        let instructions = input.map { (Character) -> Character in
               return Character
-            }
+        }
+        let moveUp: Character = "("
+        let moveDown: Character = ")"
         
         var floor = 0
         
         for i in 0..<instructions.count {
 
-            if ( instructions[i] == "(") {
+            if ( instructions[i] == moveUp) {
                 floor = floor + 1
             }
-            else if (instructions[i] == ")") {
+            else if (instructions[i] == moveDown) {
                 floor = floor - 1
             }
         }
@@ -28,6 +30,28 @@ public class Puzzle {
     }
 
     public func part2() -> Int {
-        return 0
+        let instructions = input.map { (Character) -> Character in
+              return Character
+        }
+        let moveUp: Character = "("
+        let moveDown: Character = ")"
+        
+        var floor = 0
+        
+        for i in 0..<instructions.count {
+
+            if ( instructions[i] == moveUp) {
+                floor = floor + 1
+            }
+            else if (instructions[i] == moveDown) {
+                floor = floor - 1
+            }
+
+            if (floor == -1) {
+                return i + 1
+            }
+        }
+        
+        return floor
     }
 }
