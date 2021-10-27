@@ -7,5 +7,12 @@
 
 import Foundation
 
-let exampleText = """
-"""
+let exampleText1 = (instructions: "(())", floor: 0)
+let exampleText2 = (instructions: "()()", floor: 0)
+let exampleText3 = (instructions: "(((", floor: 3)
+let exampleText4 = (instructions: "(()(()(", floor: 3)
+let exampleText5 = (instructions: "))(((((", floor: 3)
+let exampleText6 = (instructions: "())", floor: -1)
+let exampleText7 = (instructions: "))(", floor: -1)
+let exampleText8 = (instructions: ")))", floor: -3)
+let exampleText9 = (instructions: ")())())", floor: -3)
