@@ -75,6 +75,6 @@ final class PuzzleTests: XCTestCase {
         ("testExample6", testExample6),
         ("testExample7", testExample7),
         ("testExample8", testExample8),
-        ("testExample9", testExample9),
+        ("testExample9", testExample9)
     ]
 }
