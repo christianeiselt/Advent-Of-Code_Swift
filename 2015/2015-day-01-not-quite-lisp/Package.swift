@@ -20,6 +20,6 @@ let package = Package(
             dependencies: ["AdventKit"]),
         .testTarget(
             name: "PuzzleTests",
-            dependencies: ["Puzzle"]),
+            dependencies: ["Puzzle"])
     ]
 )
