@@ -66,6 +66,20 @@ final class PuzzleTests: XCTestCase {
         XCTAssertEqual(puzzle.part1(), exampleText9.floor)
     }
 
+    func testExample10() throws {
+
+        let puzzle = Puzzle(input: exampleText10.instructions)
+
+        XCTAssertEqual(puzzle.part2(), exampleText10.basement)
+    }
+
+    func testExample11() throws {
+
+        let puzzle = Puzzle(input: exampleText11.instructions)
+
+        XCTAssertEqual(puzzle.part2(), exampleText11.basement)
+    }
+
     static var allTests = [
         ("testExample1", testExample1),
         ("testExample2", testExample2),
@@ -75,6 +89,8 @@ final class PuzzleTests: XCTestCase {
         ("testExample6", testExample6),
         ("testExample7", testExample7),
         ("testExample8", testExample8),
-        ("testExample9", testExample9)
+        ("testExample9", testExample9),
+        ("testExample10", testExample10),
+        ("testExample11", testExample11)
     ]
 }
