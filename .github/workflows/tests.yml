@@ -10,19 +10,13 @@ on:
 
 jobs:
   swift-job:
-    runs-on: ubuntu-latest
+    runs-on: macOS-latest
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Platform check
         run: uname -a
-
-      - name: Pushd check
-        run: which pushd
-
-      - name: Popd check
-        run: which popd
 
       - name: swift info
         run: swift --version
