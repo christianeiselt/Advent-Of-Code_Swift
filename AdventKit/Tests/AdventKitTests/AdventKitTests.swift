@@ -1,5 +1,5 @@
-import XCTest
 @testable import AdventKit
+import XCTest
 
 final class AdventKitTests: XCTestCase {
     func testExample() throws {
