@@ -1,5 +1,5 @@
-import Puzzle
 import AdventKit
+import Puzzle
 
 let puzzle = Puzzle(input: puzzleText)
 
