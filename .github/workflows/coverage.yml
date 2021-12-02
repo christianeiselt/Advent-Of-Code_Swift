@@ -2,7 +2,8 @@ name: coverage
 
 on:
   push:
-    - main
+    branches:
+      - '*'
 
 jobs:
   swift-job:
