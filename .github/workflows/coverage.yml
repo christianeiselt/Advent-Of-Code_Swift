@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@master
   
       - name: Codecov
-        uses: codecov/codecov-action@v2.1
+        uses: codecov/codecov-action@v2.1.0
         with:
           files: ./coverage1.xml,./coverage2.xml # optional
           flags: unittests # optional
