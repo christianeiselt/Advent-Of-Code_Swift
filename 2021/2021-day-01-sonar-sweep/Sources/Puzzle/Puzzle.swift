@@ -8,32 +8,57 @@ public class Puzzle {
         self.input = input
     }
 
-    public func part1() -> Int {
-        let depth_measurements = self.input.split(separator: "\n").map { Int($0)! }
-        var last_measurement = 0
-        var count_larger_measurements = 0
-
-        for index in 0 ..< depth_measurements.count {
-            if index == 0 {
-                print("(N/A - no previous measurement)")
-            }
-            else if depth_measurements[index] > last_measurement {
-                print("increased")
-                count_larger_measurements = count_larger_measurements + 1
-            }
-            else {
-                print("decreased")
-                // evaluate next
-            }
-
-            last_measurement = depth_measurements[index]
+    public func isIncrease(first: Int, second: Int) -> Bool {
+        if second > first {
+            return true
         }
-
-        print("count for task: \(count_larger_measurements)")
-        return count_larger_measurements
+        else {
+            return false
+        }
     }
 
-    public func part2() -> String {
-        return "Part Two"
+    public func part1() -> Int {
+        let measurements = input.split(separator: "\n").map { Int($0)! }
+        var last_measurement = 0
+        var count_increased = 0
+
+        for index in 0 ..< measurements.count {
+            if index == 0 {
+                // no previous measurement
+            }
+            else if isIncrease(first: last_measurement, second: measurements[index]) {
+                count_increased += 1
+            }
+            else {
+                // no increase
+            }
+
+            last_measurement = measurements[index]
+        }
+
+        return count_increased
+    }
+
+    func getThreeMeasurementWindow(first: Int, second: Int, third: Int) -> Int {
+        return first+second+third
+    }
+
+    public func part2() -> Int {
+        let measurements = input.split(separator: "\n").map { Int($0)! }
+        var count_increased = 0
+
+        for index in 0 ..< (measurements.count - 3) {
+            let firstWindow = getThreeMeasurementWindow(first: measurements[index], second: measurements[index+1], third: measurements[index+2])
+            let secondWindow = getThreeMeasurementWindow(first: measurements[index+1], second: measurements[index+2], third: measurements[index+3])
+
+            if isIncrease(first: firstWindow, second: secondWindow) {
+                count_increased += 1
+            }
+            else {
+                // no increase
+            }
+        }
+
+        return count_increased
     }
 }
