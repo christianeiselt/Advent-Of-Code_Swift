@@ -3,9 +3,6 @@ import Foundation
 
 public class Puzzle {
     let input: String
-    let DirectionForward: String = "forward"
-    let DirectionUp: String = "up"
-    let DirectionDown: String = "down"
 
     public init(input: String) {
         self.input = input
@@ -23,8 +20,8 @@ public class Puzzle {
     }
 
     private func get_step(step: String) -> Step {
-        let step_values = step.split(separator: " ")
-        return Step(direction: String(step_values[0]), distance: Int(step_values[1])!)
+        let stepValues = step.split(separator: " ")
+        return Step(direction: String(stepValues[0]), distance: Int(stepValues[1])!)
     }
 
     private enum Part {
@@ -36,8 +33,7 @@ public class Puzzle {
         var newPosition = position
         if part == Part.ONE {
             newPosition.horizontal += step.distance
-        }
-        else {
+        } else {
             newPosition.horizontal += step.distance
             newPosition.depth += newPosition.aim * step.distance
         }
@@ -49,8 +45,7 @@ public class Puzzle {
         var newPosition = position
         if part == Part.ONE {
             newPosition.depth -= step.distance
-        }
-        else {
+        } else {
             newPosition.aim -= step.distance
         }
 
@@ -61,8 +56,7 @@ public class Puzzle {
         var newPosition = position
         if part == Part.ONE {
             newPosition.depth += step.distance
-        }
-        else {
+        } else {
             newPosition.aim += step.distance
         }
 
@@ -70,24 +64,24 @@ public class Puzzle {
     }
 
     private func get_final_position(steps: [String.SubSequence], part: Part) -> Position {
+        let directionForward: String = "forward"
+        let directionUp: String = "up"
+        let directionDown: String = "down"
         var currentPosition = Position(horizontal: 0, depth: 0, aim: 0)
 
         for index in 0 ..< (steps.count) {
             let step = get_step(step: String(steps[index]))
-            let shouldMoveForward = step.direction == DirectionForward
-            let shouldMoveUp = step.direction == DirectionUp
-            let shouldMoveDown = step.direction == DirectionDown
+            let shouldMoveForward = step.direction == directionForward
+            let shouldMoveUp = step.direction == directionUp
+            let shouldMoveDown = step.direction == directionDown
 
             if shouldMoveForward {
                 currentPosition = getNewPositionMoveForward(position: currentPosition, step: step, part: part)
-            }
-            else if shouldMoveUp {
+            } else if shouldMoveUp {
                 currentPosition = getNewPositionMoveUp(position: currentPosition, step: step, part: part)
-            }
-            else if shouldMoveDown {
+            } else if shouldMoveDown {
                 currentPosition = getNewPositionMoveDown(position: currentPosition, step: step, part: part)
-            }
-            else {
+            } else {
                 print("Incorrect direction!")
             }
         }
