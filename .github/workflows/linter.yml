@@ -25,6 +25,16 @@ on:
 # Set the Job #
 ###############
 jobs:
+  megalinter:
+    displayName: MegaLinter
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+    - script: |
+        docker pull megalinter/megalinter:v5
+        docker run -v $(System.DefaultWorkingDirectory):/tmp/lint megalinter/megalinter
+      displayName: 'Code Scan using MegaLinter'
+
   build:
     # Name the Job
     name: Lint Code Base
