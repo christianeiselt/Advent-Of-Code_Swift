@@ -60,9 +60,10 @@ jobs:
       ##################################
       - name: Upload reports as artifact
         uses: actions/upload-artifact@v2
-        with:
-          name: reports
-          path: /github/workspace/report/**/*.log
+        if: failure()
+         with:
+          name: superlinter-artifact
+          path: ${{ github.workspace }}
 
   megalinter:
     # Name the Job
@@ -96,6 +97,7 @@ jobs:
       ##################################
       - name: Upload reports as artifact
         uses: actions/upload-artifact@v2
-        with:
-          name: reports
-          path: /github/workspace/report/**/*.log
+        if: failure()
+         with:
+          name: megalinter-artifact
+          path: ${{ github.workspace }}

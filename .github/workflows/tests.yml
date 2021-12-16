@@ -4,9 +4,9 @@ name: Tests
 on:
   push:
     branches:
-      - '*'
+      - "*"
     tags-ignore:
-      - '*'
+      - "*"
   pull_request:
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
         uses: styfle/cancel-workflow-action@0.6.0
         with:
           access_token: ${{ github.token }}
-      
+
       - uses: actions/checkout@v2
 
       - name: Platform check
@@ -35,4 +35,3 @@ jobs:
 
       - name: Run
         run: ./runAll.sh
-        
