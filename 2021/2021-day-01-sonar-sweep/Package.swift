@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "2019-day-01",
+    name: "2021-day-01",
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(path: "../../AdventKit")

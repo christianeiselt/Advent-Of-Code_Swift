@@ -1,0 +1,27 @@
+---
+name: coverage
+
+on:
+  push:
+    branches:
+      - "*"
+
+jobs:
+  codecov:
+    runs-on: macOS-latest
+
+    steps:
+      - name: Cancel previous jobs
+        uses: styfle/cancel-workflow-action@0.6.0
+        with:
+          access_token: ${{ github.token }}
+
+      - uses: actions/checkout@master
+
+      - name: Codecov
+        uses: codecov/codecov-action@v2.1.0
+        with:
+          flags: unittests # optional
+          name: codecov-umbrella # optional
+          fail_ci_if_error: true # optional (default = false)
+          verbose: true # optional (default = false)
