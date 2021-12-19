@@ -8,4 +8,12 @@ final class AdventKitTests: XCTestCase {
         // results.
         XCTAssertEqual(AdventKit().text, "Hello, World!")
     }
+
+    func testGetDimensionsArray() throws {
+        XCTAssertEqual(AdventKit().getDimensionsArray(input: "2x3x4"), [2, 3, 4])
+    }
+
+    func testGetLinesAsList() throws {
+        XCTAssertEqual(AdventKit().getLinesAsList(input: "2x3x4\n3x4x5"), ["2x3x4", "3x4x5"])
+    }
 }
