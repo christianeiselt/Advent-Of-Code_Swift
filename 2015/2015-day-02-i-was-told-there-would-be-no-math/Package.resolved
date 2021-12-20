@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AdventKit",
+        "repositoryURL": "https://github.com/christianeiselt/AdventKit",
+        "state": {
+          "branch": null,
+          "revision": "f29fbf5f441946d4badc90c923fe491ab94e9612",
+          "version": "0.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

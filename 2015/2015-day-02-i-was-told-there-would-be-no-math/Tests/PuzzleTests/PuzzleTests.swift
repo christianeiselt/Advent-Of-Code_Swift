@@ -29,15 +29,17 @@ final class PuzzleTests: XCTestCase {
         XCTAssertEqual(puzzle.getAreaSmallestSide(dimensions: [3, 2, 4]), 6)
     }
 
-    func testGetAreaForBox() throws {
+    func testGetBoxArea() throws {
         let puzzle = Puzzle(input: example1.input)
 
-        XCTAssertEqual(puzzle.getAreaForBox(boxMeasure: puzzle.input), 58)
+        XCTAssertEqual(puzzle.getBoxArea(boxMeasurements: [2, 3, 4]), 58)
     }
 
-
-    //    static var allTests = [
-//        ("testExample1", testExample1),
-//        ("testExample2", testExample2)
-//    ]
+    static var allTests = [
+        ("testExample1", testExample1),
+        ("testExample2", testExample2),
+        ("testGetArea", testGetArea),
+        ("testGetShortestSide", testGetShortestSide),
+        ("testGetBoxArea", testGetBoxArea)
+    ]
 }

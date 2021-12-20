@@ -9,11 +9,12 @@ public class Puzzle {
     }
 
     public func part1() -> Int {
-        let boxMeasurements = AdventKit().getLinesAsList(input: input)
         var totalSum: Int = 0
+        let boxesMeasurements = InputConverter()
+            .getLinesSplittedAs2DIntArray(input: input, separator: "x")
 
-        for index in 0 ..< boxMeasurements.count {
-            let boxArea = getAreaForBox(boxMeasure: boxMeasurements[index])
+        for index in 0 ..< boxesMeasurements.count {
+            let boxArea = getBoxArea(boxMeasurements: boxesMeasurements[index])
             totalSum += boxArea
         }
 
@@ -31,6 +32,7 @@ public class Puzzle {
         let areaFrontBack = 2*length*width
         let areaLeftRight = 2*height*length
         let areaTopBottom = 2*width*height
+
         let area = areaFrontBack + areaLeftRight + areaTopBottom
 
         return area
@@ -43,11 +45,12 @@ public class Puzzle {
         return lengthSmallestSide*lengthNextBiggerSide
     }
 
-    public func getAreaForBox(boxMeasure: String) -> Int {
-        let dimensions = AdventKit().getDimensionsArray(input: boxMeasure)
-        let area = getArea(dimensions: dimensions)
-        let areaSmallestSide = getAreaSmallestSide(dimensions: dimensions)
+    public func getBoxArea(boxMeasurements: [Int]) -> Int {
+        let area = getArea(dimensions: boxMeasurements)
+        let areaSmallestSide = getAreaSmallestSide(dimensions: boxMeasurements)
 
-        return area + areaSmallestSide
+        let boxArea = area + areaSmallestSide
+
+        return boxArea
     }
 }
