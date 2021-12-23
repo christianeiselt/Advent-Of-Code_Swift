@@ -3,15 +3,37 @@ name: Tests
 
 on:
   push:
-    branches:
-      - "*"
-    tags-ignore:
-      - "*"
+    branches-ignore:
+      - main
+      - dev
+    paths:
+      - "**.swift"
+      - "**.yml"
   pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - "**.swift"
+      - "**.yml"
+  workflow_dispatch:
 
 jobs:
-  swift-job:
-    runs-on: macOS-latest
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - "swift:5.2-bionic"
+          - "swift:5.3-bionic"
+          - "swift:5.4-bionic"
+          - "swift:5.5-bionic"
+          - "swift:5.5-focal"
+          - "swift:5.5-amazonlinux2"
+          - "swift:5.5-centos8"
+
+    container:
+      image: ${{ matrix.image }}
 
     steps:
       - name: Cancel previous jobs
