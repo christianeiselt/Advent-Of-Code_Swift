@@ -24,7 +24,6 @@ jobs:
     strategy:
       matrix:
         image:
-          - "swift:5.2-bionic"
           - "swift:5.3-bionic"
           - "swift:5.4-bionic"
           - "swift:5.5-bionic"
