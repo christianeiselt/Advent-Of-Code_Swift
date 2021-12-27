@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # We want this to output $PATH without expansion
-# shellcheck disable=SC2016
-find . -name "*day*" -type d \
-	-exec echo Building {} + \
-	-exec sh -c 'cd "$1"; swift build -c release' sh {} +
+packages=()
+while IFS= read -r -d $'\0'; do
+	packages+=("$REPLY")
+done < <(find . -name "*day*" -type d -print0)
+
+for package in "${packages[@]}"; do
+	echo "Building $package"
+	cd "$package" || return
+	swift build -c release
+	cd - || return
+done
