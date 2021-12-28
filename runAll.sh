@@ -4,11 +4,11 @@
 packages=()
 while IFS= read -r -d $'\0'; do
 	packages+=("$REPLY")
-done < <(find . -name "*day*" -type d | sort | xargs -0)
+done < <(find . -name "*day*" -type d -prune -print0 | sort -z)
 
 for package in "${packages[@]}"; do
 	echo "Running $package"
-	cd "$package" || return
-	swift build -c release
-	cd - || return
+	cd "$package" || exit
+	swift run -c release
+	cd - || exit
 done
