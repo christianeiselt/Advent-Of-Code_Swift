@@ -56,3 +56,17 @@ jobs:
 
       - name: Run
         run: ./runAll.sh
+
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false
+          file: info.lcov
+          verbose: true
+
+      - name: Upload reports as artifact at failure
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: AdventKit-artifact
+          path: ${{ github.workspace }}
