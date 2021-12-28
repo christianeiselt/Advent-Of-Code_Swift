@@ -1,0 +1,38 @@
+{
+  "version": "0.1",
+  "language": "en",
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/vscode-extension/**",
+    "**/.git/**",
+    ".vscode",
+    "package-lock.json",
+    "report"
+  ],
+  "words": [
+    "Accio",
+    "Autoformatter",
+    "Chronal",
+    "Codacy",
+    "Codecov",
+    "accio",
+    "amazonlinux",
+    "codecov",
+    "fastlane",
+    "hmap",
+    "markdownlint",
+    "pbxuser",
+    "perspectivev",
+    "styfle",
+    "superlinter",
+    "swiftpm",
+    "unittests",
+    "xccheckout",
+    "xcodeproj",
+    "xcscmblueprint",
+    "xctimeline",
+    "xcuserdata",
+    "xcworkspace",
+    "xcworkspacedata"
+  ]
+}
