@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # We want this to output $PATH without expansion
-# shellcheck disable=SC2016
-find -s . -name "*day*" -depth 2 -type d \
-	-exec echo Running {} \; \
-	-exec sh -c 'pushd .  > /dev/null; cd "$1"; swift run -c release; popd > /dev/null' sh {} \;
+packages=()
+while IFS= read -r -d $'\0'; do
+	packages+=("$REPLY")
+done < <(find . -name "*day*" -type d -prune -print0 | sort -z)
+
+for package in "${packages[@]}"; do
+	echo "Running $package"
+	cd "$package" || exit
+	swift run -c release
+	cd - || exit
+done

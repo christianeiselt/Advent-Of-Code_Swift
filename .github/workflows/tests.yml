@@ -3,15 +3,36 @@ name: Tests
 
 on:
   push:
-    branches:
-      - "*"
-    tags-ignore:
-      - "*"
+    branches-ignore:
+      - main
+      - dev
+    paths:
+      - "**.swift"
+      - "**.yml"
   pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - "**.swift"
+      - "**.yml"
+  workflow_dispatch:
 
 jobs:
-  swift-job:
-    runs-on: macOS-latest
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image:
+          - "swift:5.3-bionic"
+          - "swift:5.4-bionic"
+          - "swift:5.5-bionic"
+          - "swift:5.5-focal"
+          - "swift:5.5-amazonlinux2"
+          - "swift:5.5-centos8"
+
+    container:
+      image: ${{ matrix.image }}
 
     steps:
       - name: Cancel previous jobs
@@ -35,3 +56,17 @@ jobs:
 
       - name: Run
         run: ./runAll.sh
+
+      - name: Upload to codecov.io
+        uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: false
+          file: info.lcov
+          verbose: true
+
+      - name: Upload reports as artifact at failure
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: AdventKit-artifact
+          path: ${{ github.workspace }}
